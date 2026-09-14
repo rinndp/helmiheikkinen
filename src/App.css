@@ -8,7 +8,10 @@
   display: flex;
   justify-content: center;
   gap: 3em;
-  padding: 2em 5vw;
+  padding: 0.7em 5vw;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav a {
@@ -180,11 +183,23 @@
 @media (max-width: 720px) {
   .nav {
     gap: 1.5em;
-    padding: 1.5em 5vw;
+    padding: 0.8em 5vw;
   }
 
   .gallery--horizontal {
     flex-direction: column;
+  }
+}
+
+/* portrait screens (mobile/tablet held upright): portrait galleries go single-column */
+@media (max-width: 1024px) and (orientation: portrait) {
+  .gallery--portrait,
+  .gallery--dynamic {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery--dynamic .gallery__item--portrait {
+    grid-column: 1 / -1;
   }
 }
 
