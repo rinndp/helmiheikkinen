@@ -25,6 +25,10 @@ function Gallery({ layout, items }: { layout: Session['layout']; items: Session[
 
 function App() {
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+    window.scrollTo(0, 0)
     AOS.init({ duration: 800, easing: 'ease-out-cubic', once: false, mirror: true, offset: 60 })
   }, [])
 
