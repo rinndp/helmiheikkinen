@@ -4,6 +4,7 @@ import 'aos/dist/aos.css'
 import heroImg from './assets/session1/2606_HELMI-HEIKKINEN-B-119.jpg'
 import './App.css'
 import { sessions, type Session } from './sessions/sessions';
+import { FaLink } from 'react-icons/fa'
 
 function Gallery({ layout, items }: { layout: Session['layout']; items: Session['items'] }) {
   return (
@@ -29,14 +30,16 @@ function App() {
 
   return (
     <>
-      <nav className="nav">
+      <nav data-aos="fade-down"
+        data-aos-delay="600" className="nav">
         <a href="#home">HOME</a>
         <a href="#work">WORK</a>
         <a href="#contact">CONTACT</a>
       </nav>
 
       <section id="home" className="hero">
-        <img className="hero__bg" src={heroImg} alt="" />
+        <img data-aos="fade" data-aos-delay="700"
+          className="hero__bg" src={heroImg} alt="" />
         <div className="hero__scrim" />
         <div className="hero__text">
           <h1 data-aos="fade-up">HELMI HEIKKINEN</h1>
@@ -50,15 +53,19 @@ function App() {
           <article className="session" key={s.title}>
             <header className="session__header">
               <h2 data-aos="fade-up">{s.title}</h2>
-              <a
-                href={s.credit.link}
-                target="_blank"
-                className="session__credit"
+              <div className='flex flex-row items-center justify-center gap-2'
                 data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                {s.credit.label}
-              </a>
+                data-aos-delay="100">
+                <a
+                  href={s.credit.link}
+                  target="_blank"
+                  className="session__credit"
+
+                >
+                  {s.credit.label}
+                </a>
+                <FaLink className='w-3 h-3 mt-2' />
+              </div>
             </header>
             <Gallery layout={s.layout} items={s.items} />
           </article>
