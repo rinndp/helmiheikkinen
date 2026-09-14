@@ -189,6 +189,11 @@
   .gallery--horizontal {
     flex-direction: column;
   }
+
+  /* mobile: portrait photos animate individually, not grouped by AOS delay */
+  .gallery__item--portrait[data-aos] {
+    transition-delay: 0ms !important;
+  }
 }
 
 /* portrait screens (mobile/tablet held upright): portrait galleries go single-column */
